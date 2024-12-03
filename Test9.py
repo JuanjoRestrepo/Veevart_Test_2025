@@ -18,7 +18,7 @@ def simularElevador(pisos, piso_inicial, mapa_pisos):
     imprimir_estado(f"Arreglo de pisos: {pisos}")
     imprimir_estado(f"Piso inicial de ejecución: {piso_inicial}")
     imprimir_estado(f"Pisos ingresados: {mapa_pisos}")
-    imprimir_estado(f"Sentido inicial: {direccion}")
+    imprimir_estado(f"Sentido inicial: {direccion}\n")
 
     while pisos:
         # Tomar el siguiente piso en orden
