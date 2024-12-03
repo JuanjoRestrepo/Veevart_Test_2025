@@ -1,10 +1,6 @@
 # Veevart_Test_2025
 
 
-
-
-
-
 # Documentación por secciones
 
 # 1. Elevador
@@ -49,6 +45,7 @@ Si encuentra la palabra, devuelve una lista de mapas que contiene:
 - Crea un List<String> con las palabras que deseas buscar.
 - Llama a las funciones showGrid y findInGrid para realizar la búsqueda.
 - En Apex, abrir la consola de *Execute Anonymous Windows* en la sección de *Debug* e introducir la línea: *SopaDeLetras.test();*
+- Darle check a *OpenLog*, luego en *Execute*, luego hacer check en *Debug Only* para visualizar las salidas de la ejecución.
 
 
 ### Mostrar la cuadrícula
