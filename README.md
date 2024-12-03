@@ -8,7 +8,6 @@
 # Documentación por secciones
 
 # 1. Elevador
-
 ## Funciones Principales
 ## ingresarPisoInicial:
 Solicita al usuario el piso inicial desde el cual debe comenzar el elevador. Devuelve el valor como un número entero.
@@ -49,6 +48,7 @@ Si encuentra la palabra, devuelve una lista de mapas que contiene:
 - Crea un List<String> para representar la cuadrícula.
 - Crea un List<String> con las palabras que deseas buscar.
 - Llama a las funciones showGrid y findInGrid para realizar la búsqueda.
+- En Apex, abrir la consola de *Execute Anonymous Windows* en la sección de *Debug* e introducir la línea: *SopaDeLetras.test();*
 
 
 ### Mostrar la cuadrícula
