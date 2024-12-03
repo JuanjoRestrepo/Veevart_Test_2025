@@ -6,13 +6,7 @@ def ingresarPisoInicial():
      return pisoInicial
 
 def simularElevador(pisos, piso_inicial, mapa_pisos):
-    """
-    Simula el funcionamiento de un elevador en un edificio de 29 pisos.
-    
-    :param pisos: Lista de pisos a los cuales se llama el elevador en orden definido.
-    :param piso_inicial: Piso inicial del elevador.
-    :param mapa_pisos: Diccionario donde las claves son los pisos de llamada y los valores son los destinos.
-    """
+
     piso_actual = piso_inicial
     direccion = "subiendo" if pisos[0] > piso_inicial else "bajando"
     historial = []
@@ -66,3 +60,16 @@ if __name__ == "__main__":
                   10: 1}
     
     historial = simularElevador(arreglo_pisos, piso_inicial, mapa_pisos)
+
+
+"""
+
+Simula el funcionamiento de un elevador en un edificio de 29 pisos.
+
+Parámetros:    
+
+1. pisos: Lista de pisos a los cuales se llama el elevador en orden definido.
+2. piso_inicial: Piso inicial del elevador.
+3. mapa_pisos: Diccionario donde las claves son los pisos de llamada y los valores son los destinos.
+
+"""
