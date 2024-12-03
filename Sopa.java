@@ -19,6 +19,8 @@ public class SopaDeLetras {
         // Buscar cada palabra
         for (String word : words) {
             System.debug('\nSearching "' + word + '"');
+            
+            //Llamamos a la función searchWord encargada de la lógica de buscar las palabras
             List<Map<String, Object>> result = searchWord(matrix, word);
 
             if (result != null) {
@@ -66,7 +68,7 @@ public class SopaDeLetras {
                     verticalSlice += matrix[r + i][c];
                 }
 
-                //System.debug('Vertical Check at Col ' + c + ', Row ' + r + ': ' + verticalSlice);
+                
                 if (verticalSlice == word) {
                     for (Integer i = 0; i < word.length(); i++) {
                         Map<String, Object> pos = new Map<String, Object>{
