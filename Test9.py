@@ -63,13 +63,23 @@ if __name__ == "__main__":
 
 
 """
+Documentación
+Funciones Principales
+ingresarPisoInicial:
 
-Simula el funcionamiento de un elevador en un edificio de 29 pisos.
+Solicita al usuario el piso inicial desde el cual debe comenzar el elevador.
+Devuelve el valor como un número entero.
+simularElevador:
 
-Parámetros:    
+Controla la lógica del recorrido del elevador.
+Imprime los estados del elevador, como el piso actual, dirección, paradas y cambios en la cola de pisos.
+Administra las solicitudes de destinos mediante el diccionario mapa_pisos.
+imprimir_estado:
 
-1. pisos: Lista de pisos a los cuales se llama el elevador en orden definido.
-2. piso_inicial: Piso inicial del elevador.
-3. mapa_pisos: Diccionario donde las claves son los pisos de llamada y los valores son los destinos.
+Función auxiliar para imprimir mensajes y almacenarlos en un historial para posibles análisis o depuración.
+Variables y Parámetros
+arreglo_pisos: Lista de pisos a los cuales el elevador debe ir en el orden en que se llaman.
+piso_inicial: Piso desde donde comienza el elevador.
+mapa_pisos: Diccionario que mapea pisos de llamada a destinos ingresados.
 
 """
