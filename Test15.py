@@ -41,5 +41,24 @@ def findInGrid(grid, words):
 grid = ["S O L", "U N O", "N U T"]
 words = ["SUN", "SOL", "LOT", "ONU", "RAY", "MOM"]
 
-showGrid(grid)
-findInGrid(grid, words)
+
+if __name__ == "__main__":
+    showGrid(grid)
+    findInGrid(grid, words)
+
+"""
+Documentación de las Funciones
+1. showGrid(grid):
+Función para imprimir la cuadrícula de manera visual.
+Cada fila de la cuadrícula se imprime línea por línea, facilitando su lectura.
+
+2. findInGrid(grid, words):
+Busca palabras en la cuadrícula considerando únicamente direcciones horizontales (de izquierda a derecha) y verticales (de arriba a abajo).
+Se apoya en la función interna searchWord, que realiza la búsqueda palabra por palabra.
+Convierte la cuadrícula en una lista de listas para facilitar el acceso a los elementos.
+
+3. searchWord(word):
+Revisa todas las filas y columnas buscando coincidencias exactas con la palabra dada.
+Devuelve una lista con las posiciones de cada carácter si encuentra la palabra, o None si no la encuentra.
+
+"""
