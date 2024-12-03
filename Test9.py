@@ -5,50 +5,65 @@ def ingresarPisoInicial():
      pisoInicial = int(input("Piso inicial de ejecucion: "))
      return pisoInicial
 
-#currentpos, dado, num_turno
-def simularElevador(mapaPisos, initial_floor, input_floors):
-    current_floor = initial_floor
-    direccion = "up"
-    pending_floors = mapaPisos
+def simularElevador(arregloPisos, pisoInicio, mapaPisos):
+    # Inicializar variables
+    pisoActual = pisoInicio
+    direction = "subiendo" if arregloPisos and arregloPisos[0] > pisoInicio else "bajando"
+    stops = arregloPisos[:]
+    iteration = 1
 
-    def actualizarPiso(current, input_floors, pending):
-        if current in input_floors:
-            new_floor = input_floors[current]
-            print(f"Piso ingresado: {new_floor}")
-            pending.append(new_floor)
-        return pending
+    print(f"\nArreglo de pisos: {arregloPisos}")
+    print(f"Piso inicial de ejecución: {pisoInicio}")
+    print(f"Pisos ingresados: {mapaPisos}")
+    print(f"Sentido: {direction}\n")
 
-    while pending_floors:
-        print(f"\nElevador en piso: {current_floor}")
-        if direccion == "up":
-            # Encontrar el siguiente piso hacia arriba
-            print("Elevador subiendo")
-            next_stop = next((f for f in pending_floors if f >= current_floor), None)
-            if next_stop is not None:
-                current_floor = next_stop
-                pending_floors.remove(next_stop)
-                print(f"Elevador se detiene -> {pending_floors}")
-                pending_floors = actualizarPiso(current_floor, input_floors, pending_floors)
-            else:
-                direccion = "down"
-                print("Elevador descendiendo")
-        elif direccion == "down":
-            # Encontrar el siguiente piso hacia abajo
-            print("Elevador descendiendo")
-            next_stop = next((f for f in reversed(pending_floors) if f <= current_floor), None)
-            if next_stop is not None:
-                current_floor = next_stop
-                pending_floors.remove(next_stop)
-                print(f"Elevador se detiene -> {pending_floors}")
-                pending_floors = actualizarPiso(current_floor, input_floors, pending_floors)
-            else:
-                direccion = "up"
-                print("Elevador subiendo")
+    while stops:
+        # Imprimir piso actual
+        print(f"{iteration}. Elevador en piso {pisoActual}")
+        iteration += 1
 
-# Datos de entrada
-mapaPisos = [5, 29, 13, 10]
-pisosIngresados = {5: 2, 29: 10, 13: 1, 10: 1}
+        # Actualizar dirección si es necesario
+        if direction == "subiendo" and all(floor <= pisoActual for floor in stops):
+            direction = "bajando"
+        elif direction == "bajando" and all(floor >= pisoActual for floor in stops):
+            direction = "subiendo"
+        print(f"{iteration}. Elevador {direction}")
+        iteration += 1
+
+        # Determinar próximo destino según dirección
+        if direction == "subiendo":
+            nextPiso = min((floor for floor in stops if floor > pisoActual), default=None)
+        else:  # direction == "bajando"
+            nextPiso = max((floor for floor in stops if floor < pisoActual), default=None)
+
+        # Moverse hacia el siguiente piso
+        if nextPiso is not None:
+            step = 1 if direction == "subiendo" else -1
+            for i in range(pisoActual + step, nextPiso + step, step):
+                print(f"{iteration}. Elevador en piso {i}")
+                iteration += 1
+            pisoActual = nextPiso
+
+        # Parar en el piso actual
+        print(f"{iteration}. Elevador se detiene -> {stops}")
+        iteration += 1
+
+        # Verificar si hay nuevos pisos ingresados en el mapa
+        if pisoActual in mapaPisos:
+            new_floor = mapaPisos[pisoActual]
+            stops.append(new_floor)
+            print(f"{iteration}. Piso ingresado {new_floor} → {stops}")
+            iteration += 1
+
+        # Eliminar piso actual de las paradas
+        stops.remove(pisoActual)
+
+    print(f"{iteration}. Elevador se detiene")
+
+
+# Prueba
+arregloPisos = [5, 29, 13, 10]
 pisoInicial = ingresarPisoInicial()
+mapaPisos = {5: 2, 29: 10, 13: 1, 10: 1}
 
-# Ejecución del simulador
-simularElevador(mapaPisos, pisoInicial, pisosIngresados)
+simularElevador(arregloPisos, pisoInicial, mapaPisos)
